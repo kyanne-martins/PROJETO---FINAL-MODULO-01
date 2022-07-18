@@ -1,4 +1,4 @@
-package teste1;
+package teste;
 
 public abstract class cadPass {
 
@@ -12,15 +12,9 @@ public abstract class cadPass {
 
 	// Contrutor
 
-	public cadPass (String nome,int idade, boolean sintomasCovid,String infoSintoma,int num) 
+	public cadPass () 
 	{
 
-		this.nome=nome;
-		this.idade = idade;
-		this.sintomasCovid = sintomasCovid;
-		this.infoSintoma = infoSintoma;
-		this.num = num;
-		
 	}
 	
 	
@@ -29,6 +23,7 @@ public abstract class cadPass {
 	public abstract void inicioCadastro();
 	public abstract void Covid();
 	public abstract void infoPass();
+	public abstract void infoSintoma();
 	public abstract void listaClass();
 	public abstract void classMedica();
 	

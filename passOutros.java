@@ -1,51 +1,53 @@
-package teste1;
+package teste;
+
+import java.util.Random;
 
 public class passOutros extends cadPass{
 	
-	//atributos da classfilha passOutos
+	//chamando a class random;
+	Random random = new Random();
 	
-	private boolean prioridade;
+	//atributos da classfilha passOutos.
+	//variavel para guardar e chamar os numeros randomicos.
+	
+	private int ordemAtend;
+	int chamada = random.nextInt(100);
 	
 	// Construtor da classfilha passOutos
 	
-		public passOutros (String nome,int idade,boolean sintomasCovid,String infoSintoma,int num,boolean prioridade) 
+		public passOutros () 
 			{
-				super(nome,idade,sintomasCovid,infoSintoma,num);
-				this.prioridade = prioridade;
+				
 			}
 		
 	// gets e sett da class filha passOutros
 
-		public boolean getPrioridade() {
-			return prioridade;
+		public int getOrdemAtend() {
+			return ordemAtend;
 		}
 
-		public void setPrioridade(boolean prioridade) {
-			this.prioridade = prioridade;
+		public void setOrdemAtend(int ordemAtend) {
+			this.ordemAtend = ordemAtend;
 		}
 		
 		// metodo poliformismo da class mãe passCovid
 
 		@Override
 		public void inicioCadastro() {
-			System.out.println("Você está no cadastramento Geral\n");
-			System.out.println("Você tem sintomas de covid?\n");
+			System.out.println("Olá, essa é a triagem geral!\n");
+			System.out.println("Por favor digite seus dados para realizarmos a triagem!\n");
 			
 		}
 
+
 		@Override
 		public void Covid() {
-			if(super.getSintomasCovid()==true)
+			if(super.getSintomasCovid()==false)
 			{
 				
-				System.out.println("Sim!\nVocê será chamado para triagem especial de Covid!\n");
+				System.out.println("Você será chamado(a) no painel Geral!\n");
+				System.out.println("Seu numero de atendimento é: "+chamada);
 			}
-			
-			else
-			{
-				System.out.println("Não!\nVocê será chamado para triagem geral!");
-			}	
-			
 		}
 
 		@Override
@@ -56,19 +58,37 @@ public class passOutros extends cadPass{
 			System.out.println("Idade:"+super.getIdade()+"\n");
 			System.out.println("Sintomas Covide:"+super.getSintomasCovid()+"\n");
 			System.out.println("Sintoma da paciente:"+super.getInfoSintoma()+"\n");
-			System.out.println("Paciente prioritário chamada com urgência: "+this.prioridade+"\n");
+			
 			
 		}
 
 		@Override
 		public void listaClass() {
 			
+			System.out.println("****************************************************");
 			System.out.println("Classificação de acordo com os sintomas do paciente:\n");
-			System.out.println("*****  Sintomas  ***********************************\n"+"\nDorleve - 1 = Baixa Emergência.\nDor média e pressão alta - 2 = Média Emergência\nDor aguda, pressão alta e diabetes - 3 = Alta emergência.\n");
+			System.out.println("*****  Sintomas  ***********************************\n"+"\n1- Dorleve.\n2-Dor média e pressão alta.\n3-Dor aguda, pressão alta e diabetes.\n");
 			System.out.println("****************************************************");
 			
 		}
-
+		
+		@Override
+		public void infoSintoma() {
+			switch(super.getNum()) {
+			 
+			 case 1: 
+				 super.setInfoSintoma("Dorleve.");
+			 break;
+			 
+			 case 2: 
+				super.setInfoSintoma("Dor média e pressão alta.");
+			 break;
+			 
+			 case 3: 
+				 super.setInfoSintoma("Dor aguda, pressão alta e diabetes.");
+			 break;
+			 }
+		}
 		@Override
 		public void classMedica() {
 			 switch(super.getNum()) {
@@ -90,9 +110,6 @@ public class passOutros extends cadPass{
 			
 		}
 	
-	
-		
-		
-		
+
 		
 }
